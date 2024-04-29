@@ -1,0 +1,16 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    hostname: grafana
+    image: grafana/grafana
+    environment:
+      - GF_SERVER_HTTP_PORT=8080
+    ports:
+      - 8080:8080
